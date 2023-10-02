@@ -1,38 +1,28 @@
 JMP start
 
-seis: DB 6
-cinco: DB 5
-veinte: DB 20
-diez: DB 10
-siete: DB 7
-cero: DB 0
+zero: DB 0
+uno: DB 1
 
 start:
-	MOV A, [seis]
-	MOV B, [cinco]
-	MUL B
-	PUSH A
+	; Primer resultado: A=0, B=0
+	MOV A, [zero]
+	MOV B, [zero]
+	AND A, B
 
-	MOV A, [veinte]
-	MOV B, [diez]
-	SUB A, B
-	PUSH A
-
-	MOV A, [diez]
-	MOV B, [cinco]
-	SUB A, B
-	MOV C, A
-
-	MOV A, [cero]
-	POP B
-	ADD A, B
-	POP B
-	ADD A, B
-	SUB A, C
-
-	DIV [siete]
-	MOV D, 232
-	ADD A, 48
-	MOV [D], A
-
+	; Segundo resultado: A=0, B=1
+	MOV A, [zero]
+	MOV B, [uno]
+	AND A, B
+	
+	; Tercer resultado: A=1, B=0
+	MOV A, [uno]
+	MOV B, [zero]
+	AND A, B
+	
+	; Cuarto resultado: A=1, B=1
+	MOV A, [uno]
+	MOV B, [uno]
+	AND A, B
+	
+	; Terminar el programa
 	HLT
